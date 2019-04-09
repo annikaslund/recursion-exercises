@@ -44,3 +44,14 @@ function isPalindrome(str, i=str.length-1, compStr=""){
     return isPalindrome(str, i-1, compStr);
 }
 
+// Find Index
+// Given an array and a string, return the index of that string in 
+// the array (or -1 if not present):
+
+function findIndex(arr, str, i=0, idx=-1){
+    if (i >= arr.length) return idx;
+
+    if (arr[i] === str) idx = i;
+
+    return findIndex(arr, str, i+1, idx);
+}
