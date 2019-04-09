@@ -55,3 +55,13 @@ function findIndex(arr, str, i=0, idx=-1){
 
     return findIndex(arr, str, i+1, idx);
 }
+
+// Reverse String
+// Return a copy of a string, reversed:
+
+function reverseString(str, i=str.length-1, reversedStr=""){
+    if (i < 0) return reversedStr;
+
+    reversedStr += str[i];
+    return reverseString(str, i-1, reversedStr)
+}
