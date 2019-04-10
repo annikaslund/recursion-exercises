@@ -52,17 +52,34 @@ function findIndex(arr, str, i = 0, idx = -1) {
 
 /** revString: return a copy of a string, but in reverse. */
 
-function revString(str, i=str.length-1, reversedStr="") {
+function revString(str, i = str.length - 1, reversedStr = "") {
   if (i < 0) return reversedStr;
 
   reversedStr += str[i];
-  return revString(str, i-1, reversedStr)
+  return revString(str, i - 1, reversedStr)
 }
 
 /** gatherStrings: given an object, return an array of all of the string values. */
+function gatherStrings(obj, objStrs=[]) {
+  // let objStrs = [];
 
-function gatherStrings(obj) {
+  // function _inner() {
+  //   for (let key in obj) {
+  //     if (typeof obj[key] === "object") {
+  //       gatherStrings(obj[key])
+  //     }
+  //     if (typeof obj[key] === "string") objStrs.push(obj[key])
+  //   }
+
+  // }
+  // _inner(obj);
+  // return objStrs;
+  for (let key in obj){
+    if (typeof obj[key] === "string") objStrs.push(obj[key]);
+    if (typeof obj[key] === "object") objStrs.push(...gatherStrings(obj[key]))
+  }
   
+  return objStrs;
 }
 
 /** binarySearch: given a sorted array of numbers, and a value,
